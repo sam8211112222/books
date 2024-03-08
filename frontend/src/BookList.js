@@ -8,9 +8,9 @@ const BookList = ({ books }) => {
     return (
         <Paper style={{ margin: 16, padding: 16 }}>
             <List>
-                {books.map(book => (
+                {books.map((book,index) => (
                     <ListItem key={book.id} divider>
-                        <ListItemText primary={book.title} secondary={`作者: ${book.author}`} />
+                        <ListItemText primary={`${index}. ${book.title}`} />
                         <BookDetails bookId={book.id} />
                     </ListItem>
                 ))}

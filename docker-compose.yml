@@ -1,7 +1,11 @@
 version: '3.6'
 services:
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        BUILD_NO_CACHE: "true"
     ports:
       - "80:80"
     depends_on:
@@ -36,6 +40,6 @@ services:
       - ./mysql/sample_data/:/docker-entrypoint-initdb.d/
     healthcheck:
       test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
-      interval: 6s
-      timeout: 3s
-      retries: 5
+      interval: 10s
+      timeout: 5s
+      retries: 10
